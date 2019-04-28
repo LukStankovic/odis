@@ -15,6 +15,9 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
     // Map
     @IBOutlet weak var map: MKMapView!
 
+    @IBAction func refreshVehiclesBtn(_ sender: UIButton) {
+        loadVehiclesIntoMap()
+    }
     
     let manager = CLLocationManager()
 
@@ -52,6 +55,7 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
     }
     
     
+    
     @objc func loadVehiclesIntoMap() {
         vehicleNetworing.getVehicles() { (vehicles, error) in
             if error != nil {
@@ -65,14 +69,46 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
             }
             
             for vehicle in vehicles.vehicles {
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(vehicle.locationX), longitude: CLLocationDegrees(vehicle.locationY))
-                annotation.title = vehicle.line
+                let vehicleLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(vehicle.locationX), longitude: CLLocationDegrees(vehicle.locationY))
                 
+                var vehicleInfo = "Výchozí: " + vehicle.startStop + "\n"
+                vehicleInfo += "Cílová: " + vehicle.finalStop + "\n"
+                vehicleInfo += "Poslední: " + vehicle.lastStop + "\n"
+                vehicleInfo += "Následující: " + vehicle.nextStop + "\n"
+                
+                let annotation = VehicleAnnotation(pinTitle: "Linka " + vehicle.line, pinSubTitle: vehicleInfo, location: vehicleLocation, lineNumber: Int(vehicle.line))
+            
                 self.map.addAnnotation(annotation)
+                self.map.delegate = self
             }
             
         }
+    }
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "customannotation")
+        annotationView.canShowCallout = true
+        let vehicleAnnotation = annotation as! VehicleAnnotation
+        annotationView.image = UIImage(named: vehicleAnnotation.vehicleType)
+
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 1000, height: 400))
+        label.text = annotation.subtitle ?? ""
+        
+        label.numberOfLines = 0
+        annotationView.detailCalloutAccessoryView = label;
+
+        let width = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.lessThanOrEqual, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 700)
+        label.addConstraint(width)
+        
+        
+        let height = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+        label.addConstraint(height)
+        
+        
+        return annotationView
     }
 
 }
