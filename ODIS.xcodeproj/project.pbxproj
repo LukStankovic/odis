@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A1814902278B33B0017B3FF /* BulletinDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A18148F2278B33B0017B3FF /* BulletinDataSource.swift */; };
+		1A1814922278B50E0017B3FF /* VehiclePageBulletinItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1814912278B50E0017B3FF /* VehiclePageBulletinItem.swift */; };
+		1A1814952278BC3E0017B3FF /* VehicleTypesImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1814942278BC3E0017B3FF /* VehicleTypesImages.swift */; };
 		1A2438FC2275FA7D005DF2C8 /* VehicleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2438FB2275FA7D005DF2C8 /* VehicleNetworking.swift */; };
 		1A243901227601CE005DF2C8 /* VehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A243900227601CE005DF2C8 /* VehicleAnnotation.swift */; };
 		1A243905227616A8005DF2C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A243904227616A8005DF2C8 /* Assets.xcassets */; };
@@ -21,10 +24,14 @@
 		1AF4ED572278AA1A000C6DFE /* BusAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF4ED562278AA1A000C6DFE /* BusAnnotation.swift */; };
 		1AF4ED592278AA89000C6DFE /* TrolleyBusAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF4ED582278AA89000C6DFE /* TrolleyBusAnnotation.swift */; };
 		1AF4ED5B2278AAF3000C6DFE /* AnnotationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF4ED5A2278AAF3000C6DFE /* AnnotationFactory.swift */; };
-		1AF4ED5D2278B121000C6DFE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1AF4ED5C2278B121000C6DFE /* Podfile */; };
+		217684EA19D5972AE237D960 /* Pods_ODIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEAE9807A73012ABC7F6A6EB /* Pods_ODIS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17E347AFB9593F4F415FDEE9 /* Pods-ODIS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODIS.release.xcconfig"; path = "Target Support Files/Pods-ODIS/Pods-ODIS.release.xcconfig"; sourceTree = "<group>"; };
+		1A18148F2278B33B0017B3FF /* BulletinDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinDataSource.swift; sourceTree = "<group>"; };
+		1A1814912278B50E0017B3FF /* VehiclePageBulletinItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclePageBulletinItem.swift; sourceTree = "<group>"; };
+		1A1814942278BC3E0017B3FF /* VehicleTypesImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTypesImages.swift; sourceTree = "<group>"; };
 		1A2438FB2275FA7D005DF2C8 /* VehicleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleNetworking.swift; sourceTree = "<group>"; };
 		1A243900227601CE005DF2C8 /* VehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
 		1A243904227616A8005DF2C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,7 +48,8 @@
 		1AF4ED562278AA1A000C6DFE /* BusAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusAnnotation.swift; sourceTree = "<group>"; };
 		1AF4ED582278AA89000C6DFE /* TrolleyBusAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrolleyBusAnnotation.swift; sourceTree = "<group>"; };
 		1AF4ED5A2278AAF3000C6DFE /* AnnotationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationFactory.swift; sourceTree = "<group>"; };
-		1AF4ED5C2278B121000C6DFE /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		7D04050FB580CB225EEDF766 /* Pods-ODIS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODIS.debug.xcconfig"; path = "Target Support Files/Pods-ODIS/Pods-ODIS.debug.xcconfig"; sourceTree = "<group>"; };
+		EEAE9807A73012ABC7F6A6EB /* Pods_ODIS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ODIS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,12 +57,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				217684EA19D5972AE237D960 /* Pods_ODIS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A18148E2278B3260017B3FF /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1A1814932278B5140017B3FF /* Bulletin */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		1A1814932278B5140017B3FF /* Bulletin */ = {
+			isa = PBXGroup;
+			children = (
+				1A18148F2278B33B0017B3FF /* BulletinDataSource.swift */,
+				1A1814912278B50E0017B3FF /* VehiclePageBulletinItem.swift */,
+			);
+			path = Bulletin;
+			sourceTree = "<group>";
+		};
 		1A2438FA2275FA4C005DF2C8 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +115,8 @@
 			children = (
 				1A860E2A226365D600BC8E26 /* ODIS */,
 				1A860E29226365D600BC8E26 /* Products */,
+				8CCE7B5AE9104AA15BEDDD76 /* Pods */,
+				6AE1562DD44D0D8DFD2FBC55 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,12 +131,12 @@
 		1A860E2A226365D600BC8E26 /* ODIS */ = {
 			isa = PBXGroup;
 			children = (
+				1A18148E2278B3260017B3FF /* Helper */,
 				1AF4ED512278A619000C6DFE /* SupportFiles */,
 				1A2438FD2275FC8D005DF2C8 /* ViewControllers */,
 				1A2438FA2275FA4C005DF2C8 /* Networking */,
 				1A860E412263665100BC8E26 /* Models */,
 				1A860E39226365D800BC8E26 /* Info.plist */,
-				1AF4ED5C2278B121000C6DFE /* Podfile */,
 			);
 			path = ODIS;
 			sourceTree = "<group>";
@@ -119,6 +147,7 @@
 				1A2438FF227601BD005DF2C8 /* Annotations */,
 				1A860E46226366EE00BC8E26 /* Vehicles.swift */,
 				1AF4ED542278A8E4000C6DFE /* VehicleTypes.swift */,
+				1A1814942278BC3E0017B3FF /* VehicleTypesImages.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -134,6 +163,23 @@
 			path = SupportFiles;
 			sourceTree = "<group>";
 		};
+		6AE1562DD44D0D8DFD2FBC55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EEAE9807A73012ABC7F6A6EB /* Pods_ODIS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8CCE7B5AE9104AA15BEDDD76 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D04050FB580CB225EEDF766 /* Pods-ODIS.debug.xcconfig */,
+				17E347AFB9593F4F415FDEE9 /* Pods-ODIS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,9 +187,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A860E3C226365D800BC8E26 /* Build configuration list for PBXNativeTarget "ODIS" */;
 			buildPhases = (
+				13CDD7F440E097C934C06E2C /* [CP] Check Pods Manifest.lock */,
 				1A860E24226365D600BC8E26 /* Sources */,
 				1A860E25226365D600BC8E26 /* Frameworks */,
 				1A860E26226365D600BC8E26 /* Resources */,
+				696DE809825E32A4D3A3052D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,12 +242,58 @@
 			files = (
 				1A860E38226365D800BC8E26 /* LaunchScreen.storyboard in Resources */,
 				1A243905227616A8005DF2C8 /* Assets.xcassets in Resources */,
-				1AF4ED5D2278B121000C6DFE /* Podfile in Resources */,
 				1A860E33226365D600BC8E26 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		13CDD7F440E097C934C06E2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ODIS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		696DE809825E32A4D3A3052D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ODIS/Pods-ODIS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BulletinBoard/BLTNBoard.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BLTNBoard.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ODIS/Pods-ODIS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1A860E24226365D600BC8E26 /* Sources */ = {
@@ -208,14 +302,17 @@
 			files = (
 				1AF4ED572278AA1A000C6DFE /* BusAnnotation.swift in Sources */,
 				1A860E47226366EE00BC8E26 /* Vehicles.swift in Sources */,
+				1A1814952278BC3E0017B3FF /* VehicleTypesImages.swift in Sources */,
 				1A860E30226365D600BC8E26 /* SecondViewController.swift in Sources */,
 				1AF4ED552278A8E4000C6DFE /* VehicleTypes.swift in Sources */,
 				1A243901227601CE005DF2C8 /* VehicleAnnotation.swift in Sources */,
+				1A1814902278B33B0017B3FF /* BulletinDataSource.swift in Sources */,
 				1AF4ED592278AA89000C6DFE /* TrolleyBusAnnotation.swift in Sources */,
 				1AF4ED532278A771000C6DFE /* TramAnnotation.swift in Sources */,
 				1A2438FC2275FA7D005DF2C8 /* VehicleNetworking.swift in Sources */,
 				1AF4ED5B2278AAF3000C6DFE /* AnnotationFactory.swift in Sources */,
 				1A860E2C226365D600BC8E26 /* AppDelegate.swift in Sources */,
+				1A1814922278B50E0017B3FF /* VehiclePageBulletinItem.swift in Sources */,
 				1A860E2E226365D600BC8E26 /* VehiclesMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,6 +457,7 @@
 		};
 		1A860E3D226365D800BC8E26 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D04050FB580CB225EEDF766 /* Pods-ODIS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -378,6 +476,7 @@
 		};
 		1A860E3E226365D800BC8E26 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17E347AFB9593F4F415FDEE9 /* Pods-ODIS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import BLTNBoard
 
 class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
@@ -26,6 +27,14 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
     var userLocation: CLLocationCoordinate2D?
 
     var timer: Timer!
+    
+    let feedbackGenerator = UISelectionFeedbackGenerator()
+
+
+    lazy var bulletinManager: BLTNItemManager = {
+        let introPage = BulletinDataSource.makeVehiclePage(title: "Linka", subTitle: "Asasd")
+        return BLTNItemManager(rootItem: introPage)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,8 +83,8 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
                 vehicleInfo += "Poslední: " + vehicle.lastStop + "\n"
                 vehicleInfo += "Následující: " + vehicle.nextStop + "\n"
 
-                let annotation = AnnotationFactory.shared().getAnnotation(pinTitle: "Linka " + vehicle.line, pinSubTitle: vehicleInfo, location: vehicleLocation, vehicleLineNumber: Int(vehicle.line)!)
-
+                let annotation = AnnotationFactory.shared().getAnnotation(pinTitle: vehicle.line, pinSubTitle: vehicleInfo, location: vehicleLocation, vehicleLineNumber: Int(vehicle.line) ?? 0)
+                
                 self.map.addAnnotation(annotation)
                 self.map.delegate = self
             }
@@ -89,31 +98,25 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
         }
 
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "vehicle")
-        annotationView.canShowCallout = true
+        annotationView.canShowCallout = false
 
         let vehicleAnnotation = annotation as! VehicleAnnotation
-        annotationView.image = vehicleAnnotation.annotationIcon
+        annotationView.image = vehicleAnnotation.annotationImage
 
-        /*
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 1000, height: 400))
-        label.text = annotation.subtitle ?? ""
-        
-        label.numberOfLines = 0
-        annotationView.detailCalloutAccessoryView = label;
-
-        let width = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.lessThanOrEqual, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 700)
-        label.addConstraint(width)
-        
-        
-        let height = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
-        label.addConstraint(height)
-        
-        */
+        let annotationLabel = UILabel(frame: CGRect(x: -24, y: 55, width: 105, height: 30))
+        annotationLabel.numberOfLines = 1
+        annotationLabel.textAlignment = .center
+        annotationLabel.text =  annotation.title!!
+        annotationView.addSubview(annotationLabel)
+       
         return annotationView
     }
 
     func mapView(_ mapView: MKMapView, didSelect annotationView: MKAnnotationView) {
-
+        feedbackGenerator.selectionChanged()
+        let vehiclePage = BulletinDataSource.makeVehiclePage(title: annotationView.annotation?.title ?? "", subTitle: annotationView.annotation?.subtitle ?? "")
+        bulletinManager = BLTNItemManager(rootItem: vehiclePage)
+        bulletinManager.showBulletin(above: self)
     }
-
+    
 }

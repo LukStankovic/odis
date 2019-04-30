@@ -11,6 +11,7 @@ import MapKit
 class TrolleyBusAnnotation: VehicleAnnotation {
     override init(pinTitle: String, pinSubTitle: String, location: CLLocationCoordinate2D) {
         super.init(pinTitle: pinTitle, pinSubTitle: pinSubTitle, location: location)
-        annotationIcon = UIImage(named: VehicleTypes.tbus.rawValue)
+        annotationImage = UIImage(named: VehicleTypes.tbus.rawValue)
+        annotationIcon = VehicleTypesIcons.tbus.rawValue
     }
 }
