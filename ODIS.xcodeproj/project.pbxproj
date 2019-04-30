@@ -16,6 +16,12 @@
 		1A860E33226365D600BC8E26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A860E31226365D600BC8E26 /* Main.storyboard */; };
 		1A860E38226365D800BC8E26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A860E36226365D800BC8E26 /* LaunchScreen.storyboard */; };
 		1A860E47226366EE00BC8E26 /* Vehicles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A860E46226366EE00BC8E26 /* Vehicles.swift */; };
+		1AF4ED532278A771000C6DFE /* TramAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF4ED522278A771000C6DFE /* TramAnnotation.swift */; };
+		1AF4ED552278A8E4000C6DFE /* VehicleTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF4ED542278A8E4000C6DFE /* VehicleTypes.swift */; };
+		1AF4ED572278AA1A000C6DFE /* BusAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF4ED562278AA1A000C6DFE /* BusAnnotation.swift */; };
+		1AF4ED592278AA89000C6DFE /* TrolleyBusAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF4ED582278AA89000C6DFE /* TrolleyBusAnnotation.swift */; };
+		1AF4ED5B2278AAF3000C6DFE /* AnnotationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF4ED5A2278AAF3000C6DFE /* AnnotationFactory.swift */; };
+		1AF4ED5D2278B121000C6DFE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1AF4ED5C2278B121000C6DFE /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		1A860E37226365D800BC8E26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A860E39226365D800BC8E26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A860E46226366EE00BC8E26 /* Vehicles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicles.swift; sourceTree = "<group>"; };
+		1AF4ED522278A771000C6DFE /* TramAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TramAnnotation.swift; sourceTree = "<group>"; };
+		1AF4ED542278A8E4000C6DFE /* VehicleTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTypes.swift; sourceTree = "<group>"; };
+		1AF4ED562278AA1A000C6DFE /* BusAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusAnnotation.swift; sourceTree = "<group>"; };
+		1AF4ED582278AA89000C6DFE /* TrolleyBusAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrolleyBusAnnotation.swift; sourceTree = "<group>"; };
+		1AF4ED5A2278AAF3000C6DFE /* AnnotationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationFactory.swift; sourceTree = "<group>"; };
+		1AF4ED5C2278B121000C6DFE /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,18 +72,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		1A2438FE2275FCA9005DF2C8 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				1A2438FF227601BD005DF2C8 /* Annotations */,
-			);
-			path = Support;
-			sourceTree = "<group>";
-		};
 		1A2438FF227601BD005DF2C8 /* Annotations */ = {
 			isa = PBXGroup;
 			children = (
 				1A243900227601CE005DF2C8 /* VehicleAnnotation.swift */,
+				1AF4ED522278A771000C6DFE /* TramAnnotation.swift */,
+				1AF4ED562278AA1A000C6DFE /* BusAnnotation.swift */,
+				1AF4ED582278AA89000C6DFE /* TrolleyBusAnnotation.swift */,
+				1AF4ED5A2278AAF3000C6DFE /* AnnotationFactory.swift */,
 			);
 			path = Annotations;
 			sourceTree = "<group>";
@@ -95,25 +103,35 @@
 		1A860E2A226365D600BC8E26 /* ODIS */ = {
 			isa = PBXGroup;
 			children = (
-				1A243904227616A8005DF2C8 /* Assets.xcassets */,
-				1A2438FE2275FCA9005DF2C8 /* Support */,
+				1AF4ED512278A619000C6DFE /* SupportFiles */,
 				1A2438FD2275FC8D005DF2C8 /* ViewControllers */,
 				1A2438FA2275FA4C005DF2C8 /* Networking */,
-				1A860E412263665100BC8E26 /* Entity */,
-				1A860E2B226365D600BC8E26 /* AppDelegate.swift */,
-				1A860E31226365D600BC8E26 /* Main.storyboard */,
-				1A860E36226365D800BC8E26 /* LaunchScreen.storyboard */,
+				1A860E412263665100BC8E26 /* Models */,
 				1A860E39226365D800BC8E26 /* Info.plist */,
+				1AF4ED5C2278B121000C6DFE /* Podfile */,
 			);
 			path = ODIS;
 			sourceTree = "<group>";
 		};
-		1A860E412263665100BC8E26 /* Entity */ = {
+		1A860E412263665100BC8E26 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1A2438FF227601BD005DF2C8 /* Annotations */,
 				1A860E46226366EE00BC8E26 /* Vehicles.swift */,
+				1AF4ED542278A8E4000C6DFE /* VehicleTypes.swift */,
 			);
-			path = Entity;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1AF4ED512278A619000C6DFE /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				1A243904227616A8005DF2C8 /* Assets.xcassets */,
+				1A860E2B226365D600BC8E26 /* AppDelegate.swift */,
+				1A860E31226365D600BC8E26 /* Main.storyboard */,
+				1A860E36226365D800BC8E26 /* LaunchScreen.storyboard */,
+			);
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +194,7 @@
 			files = (
 				1A860E38226365D800BC8E26 /* LaunchScreen.storyboard in Resources */,
 				1A243905227616A8005DF2C8 /* Assets.xcassets in Resources */,
+				1AF4ED5D2278B121000C6DFE /* Podfile in Resources */,
 				1A860E33226365D600BC8E26 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,10 +206,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF4ED572278AA1A000C6DFE /* BusAnnotation.swift in Sources */,
 				1A860E47226366EE00BC8E26 /* Vehicles.swift in Sources */,
 				1A860E30226365D600BC8E26 /* SecondViewController.swift in Sources */,
+				1AF4ED552278A8E4000C6DFE /* VehicleTypes.swift in Sources */,
 				1A243901227601CE005DF2C8 /* VehicleAnnotation.swift in Sources */,
+				1AF4ED592278AA89000C6DFE /* TrolleyBusAnnotation.swift in Sources */,
+				1AF4ED532278A771000C6DFE /* TramAnnotation.swift in Sources */,
 				1A2438FC2275FA7D005DF2C8 /* VehicleNetworking.swift in Sources */,
+				1AF4ED5B2278AAF3000C6DFE /* AnnotationFactory.swift in Sources */,
 				1A860E2C226365D600BC8E26 /* AppDelegate.swift in Sources */,
 				1A860E2E226365D600BC8E26 /* VehiclesMapViewController.swift in Sources */,
 			);
