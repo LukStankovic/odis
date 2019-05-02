@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,15 +15,21 @@
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="VehiclesMapViewController" customModule="ODIS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xqL-Pf-fIt">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqL-Pf-fIt">
+                                <rect key="frame" x="20" y="65" width="339" height="620"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMF-dq-fQp">
-                                <rect key="frame" x="13" y="70" width="53" height="30"/>
-                                <state key="normal" title="Refresh"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMF-dq-fQp">
+                                <rect key="frame" x="305" y="659" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <color key="tintColor" red="0.93931519990000001" green="0.28915864229999999" blue="0.15136882660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title="🔄">
+                                    <color key="titleColor" red="0.93931519990000001" green="0.28915864229999999" blue="0.15136882660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="refreshVehiclesBtn:" destination="9pv-A4-QxB" eventType="touchUpInside" id="mAs-VC-awi"/>
                                 </connections>
@@ -31,41 +37,44 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="uMF-dq-fQp" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="26" id="14m-Bc-JTD"/>
-                            <constraint firstItem="xqL-Pf-fIt" firstAttribute="leading" secondItem="uMF-dq-fQp" secondAttribute="trailing" constant="-66" id="7PP-9K-6H1"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="xqL-Pf-fIt" secondAttribute="trailing" id="QcP-M7-fsW"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="xqL-Pf-fIt" secondAttribute="bottom" id="Qft-Fh-3r7"/>
-                            <constraint firstItem="xqL-Pf-fIt" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="U4q-14-7qJ"/>
-                            <constraint firstItem="xqL-Pf-fIt" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="dfC-35-f2y"/>
+                            <constraint firstItem="233-2E-HG0" firstAttribute="trailing" secondItem="uMF-dq-fQp" secondAttribute="trailing" constant="20" id="FGK-3H-8Un"/>
+                            <constraint firstAttribute="bottom" secondItem="xqL-Pf-fIt" secondAttribute="bottom" id="IJS-8O-OkN"/>
+                            <constraint firstItem="xqL-Pf-fIt" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="KJQ-na-MB6"/>
+                            <constraint firstAttribute="trailing" secondItem="xqL-Pf-fIt" secondAttribute="trailing" id="LHt-3U-v0e"/>
+                            <constraint firstItem="233-2E-HG0" firstAttribute="bottom" secondItem="uMF-dq-fQp" secondAttribute="bottom" constant="20" id="WUw-xN-7pZ"/>
+                            <constraint firstItem="xqL-Pf-fIt" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="XGp-jH-3d1"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
+                        <viewLayoutGuide key="safeArea" id="233-2E-HG0"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mapa" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Mapa" image="first" id="acW-dT-cKf">
+                        <color key="badgeColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="map" destination="xqL-Pf-fIt" id="sjG-Lv-Av8"/>
+                        <outlet property="refreshButton" destination="uMF-dq-fQp" id="LIi-FD-Z63"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="746.39999999999998" y="-321.42857142857144"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="ODIS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="106.5" y="426.5" width="201.5" height="43"/>
+                                <rect key="frame" x="86.666666666666671" y="384.66666666666669" width="201.66666666666663" height="43"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="99.5" y="477.5" width="215" height="17"/>
+                                <rect key="frame" x="80" y="435.66666666666669" width="215" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

@@ -14,7 +14,21 @@ import BLTNBoard
 class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     // Map
-    @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var map: MKMapView! {
+        didSet {
+            let userTrackingButton = MKUserTrackingButton(mapView: map)
+            userTrackingButton.layer.position = CGPoint(x: 30, y: 50)
+            userTrackingButton.backgroundColor = UIColor.white
+            userTrackingButton.layer.cornerRadius = 5
+            userTrackingButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+            userTrackingButton.layer.shadowRadius = 3;
+            userTrackingButton.layer.shadowOpacity = 0.5;
+            map.delegate = self
+            map.showsUserLocation = true
+            map.setUserTrackingMode(.follow, animated: true)
+            map.addSubview(userTrackingButton)
+        }
+    }
 
     @IBAction func refreshVehiclesBtn(_ sender: UIButton) {
         loadVehiclesIntoMap()
@@ -27,22 +41,27 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
     var userLocation: CLLocationCoordinate2D?
 
     var timer: Timer!
-    
+
     let feedbackGenerator = UISelectionFeedbackGenerator()
 
-
     lazy var bulletinManager: BLTNItemManager = {
-        let introPage = BulletinDataSource.makeVehiclePage(title: "Linka", subTitle: "Asasd")
+        let introPage = BulletinDataSource.makeVehiclePage(vehicle: nil)
         return BLTNItemManager(rootItem: introPage)
     }()
 
+    @IBOutlet weak var refreshButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        refreshButton.layer.cornerRadius = 5
+        refreshButton.layer.masksToBounds = true
+        
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
+        
 
         // TODO after location init
         if userLocation != nil {
@@ -75,18 +94,12 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
                 self.map.removeAnnotations(self.map.annotations)
             }
 
-            for vehicle in vehicles.vehicles {
-                let vehicleLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(vehicle.locationX), longitude: CLLocationDegrees(vehicle.locationY))
-
-                var vehicleInfo = "Výchozí: " + vehicle.startStop + "\n"
-                vehicleInfo += "Cílová: " + vehicle.finalStop + "\n"
-                vehicleInfo += "Poslední: " + vehicle.lastStop + "\n"
-                vehicleInfo += "Následující: " + vehicle.nextStop + "\n"
-
-                let annotation = AnnotationFactory.shared().getAnnotation(pinTitle: vehicle.line, pinSubTitle: vehicleInfo, location: vehicleLocation, vehicleLineNumber: Int(vehicle.line) ?? 0)
-                
-                self.map.addAnnotation(annotation)
-                self.map.delegate = self
+            DispatchQueue.main.async {
+                for vehicle in vehicles.vehicles {
+                    let annotation = AnnotationFactory.shared().getAnnotation(vehicle: vehicle)
+                    self.map.addAnnotation(annotation)
+                    self.map.delegate = self
+                }
             }
 
         }
@@ -101,22 +114,29 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
         annotationView.canShowCallout = false
 
         let vehicleAnnotation = annotation as! VehicleAnnotation
-        annotationView.image = vehicleAnnotation.annotationImage
+        annotationView.image = vehicleAnnotation.image
 
-        let annotationLabel = UILabel(frame: CGRect(x: -24, y: 55, width: 105, height: 30))
+        let annotationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 105, height: 30))
         annotationLabel.numberOfLines = 1
         annotationLabel.textAlignment = .center
         annotationLabel.text =  annotation.title!!
         annotationView.addSubview(annotationLabel)
-       
+
         return annotationView
     }
 
     func mapView(_ mapView: MKMapView, didSelect annotationView: MKAnnotationView) {
+        if annotationView.annotation is MKUserLocation {
+            return
+        }
         feedbackGenerator.selectionChanged()
-        let vehiclePage = BulletinDataSource.makeVehiclePage(title: annotationView.annotation?.title ?? "", subTitle: annotationView.annotation?.subtitle ?? "")
+        
+        let vehicleAnnotation = annotationView.annotation as! VehicleAnnotation
+        let vehiclePage = BulletinDataSource.makeVehiclePage(vehicle: vehicleAnnotation.vehicle)
         bulletinManager = BLTNItemManager(rootItem: vehiclePage)
         bulletinManager.showBulletin(above: self)
+        
     }
     
+
 }

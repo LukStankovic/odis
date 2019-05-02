@@ -9,9 +9,9 @@
 import MapKit
 
 class TramAnnotation: VehicleAnnotation {
-    override init(pinTitle: String, pinSubTitle: String, location: CLLocationCoordinate2D) {
-        super.init(pinTitle: pinTitle, pinSubTitle: pinSubTitle, location: location)
-        annotationImage = UIImage(named: VehicleTypes.tram.rawValue)
-        annotationIcon = VehicleTypesIcons.tram.rawValue
+    override init(vehicle: Vehicle) {
+        super.init(vehicle: vehicle)
+        image = UIImage(named: VehicleTypes.tram.rawValue)
+        icon = VehicleTypesIcons.tram.rawValue
     }
 }

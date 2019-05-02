@@ -14,6 +14,7 @@ struct Vehicle: Decodable {
     let lowFloor: Bool
     let vehicleNumber: String
     let delay: String
+    let delayInSeconds: Int
     let locationX: Float
     let locationY: Float
 }

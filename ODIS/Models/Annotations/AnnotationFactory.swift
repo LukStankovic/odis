@@ -16,13 +16,15 @@ class AnnotationFactory {
         return annotationFactory
     }
 
-    func getAnnotation(pinTitle: String, pinSubTitle: String, location: CLLocationCoordinate2D, vehicleLineNumber: Int) -> VehicleAnnotation {
-        if vehicleLineNumber <= 19 {
-           return TramAnnotation(pinTitle: pinTitle, pinSubTitle: pinSubTitle, location: location)
-        } else if vehicleLineNumber > 100 && vehicleLineNumber <= 113 {
-            return TrolleyBusAnnotation(pinTitle: pinTitle, pinSubTitle: pinSubTitle, location: location)
+    func getAnnotation(vehicle: Vehicle) -> VehicleAnnotation {
+        let vehicleLine = Int(vehicle.line) ?? 0
+        
+        if vehicleLine <= 19 && !vehicle.line.contains("MHD") {
+            return TramAnnotation(vehicle: vehicle)
+        } else if vehicleLine > 100 && vehicleLine <= 113 {
+            return TrolleyBusAnnotation(vehicle: vehicle)
         } else {
-            return BusAnnotation(pinTitle: pinTitle, pinSubTitle: pinSubTitle, location: location)
+            return BusAnnotation(vehicle: vehicle)
         }
     }
 

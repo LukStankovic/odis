@@ -9,9 +9,9 @@
 import MapKit
 
 class BusAnnotation: VehicleAnnotation {
-    override init(pinTitle: String, pinSubTitle: String, location: CLLocationCoordinate2D) {
-        super.init(pinTitle: pinTitle, pinSubTitle: pinSubTitle, location: location)
-        annotationImage = UIImage(named: VehicleTypes.bus.rawValue)
-        annotationIcon = VehicleTypesIcons.bus.rawValue
+    override init(vehicle: Vehicle) {
+        super.init(vehicle: vehicle)
+        image = UIImage(named: VehicleTypes.bus.rawValue)
+        icon = VehicleTypesIcons.bus.rawValue
     }
 }

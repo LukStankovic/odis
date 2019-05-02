@@ -13,6 +13,7 @@
 		1A2438FC2275FA7D005DF2C8 /* VehicleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2438FB2275FA7D005DF2C8 /* VehicleNetworking.swift */; };
 		1A243901227601CE005DF2C8 /* VehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A243900227601CE005DF2C8 /* VehicleAnnotation.swift */; };
 		1A243905227616A8005DF2C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A243904227616A8005DF2C8 /* Assets.xcassets */; };
+		1A704AC6227A0109000EB7E8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A704AC5227A0109000EB7E8 /* MapKit.framework */; };
 		1A860E2C226365D600BC8E26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A860E2B226365D600BC8E26 /* AppDelegate.swift */; };
 		1A860E2E226365D600BC8E26 /* VehiclesMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A860E2D226365D600BC8E26 /* VehiclesMapViewController.swift */; };
 		1A860E30226365D600BC8E26 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A860E2F226365D600BC8E26 /* SecondViewController.swift */; };
@@ -35,6 +36,7 @@
 		1A2438FB2275FA7D005DF2C8 /* VehicleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleNetworking.swift; sourceTree = "<group>"; };
 		1A243900227601CE005DF2C8 /* VehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
 		1A243904227616A8005DF2C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A704AC5227A0109000EB7E8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1A860E28226365D600BC8E26 /* ODIS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ODIS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A860E2B226365D600BC8E26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A860E2D226365D600BC8E26 /* VehiclesMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesMapViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A704AC6227A0109000EB7E8 /* MapKit.framework in Frameworks */,
 				217684EA19D5972AE237D960 /* Pods_ODIS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +169,7 @@
 		6AE1562DD44D0D8DFD2FBC55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A704AC5227A0109000EB7E8 /* MapKit.framework */,
 				EEAE9807A73012ABC7F6A6EB /* Pods_ODIS.framework */,
 			);
 			name = Frameworks;

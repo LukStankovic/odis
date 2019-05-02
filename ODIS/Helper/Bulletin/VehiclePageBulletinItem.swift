@@ -23,7 +23,7 @@ class VehiclePageBulletinItem: BLTNPageItem {
     override func alternativeButtonTapped(sender: UIButton) {
         feedbackGenerator.prepare()
         feedbackGenerator.selectionChanged()
-        
+
         super.alternativeButtonTapped(sender: sender)
     }
 

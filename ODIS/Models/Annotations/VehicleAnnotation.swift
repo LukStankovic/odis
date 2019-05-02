@@ -5,13 +5,16 @@ class VehicleAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
-    var annotationImage: UIImage!
-    var annotationIcon: String!
+    
+    var image: UIImage!
+    var icon: String!
+    var vehicle: Vehicle!
 
-    init(pinTitle: String, pinSubTitle: String, location: CLLocationCoordinate2D) {
-        self.title = pinTitle
-        self.subtitle = pinSubTitle
-        self.coordinate = location
+    init(vehicle: Vehicle) {
+        self.title = vehicle.line
+        self.subtitle = ""
+        self.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(vehicle.locationX), longitude: CLLocationDegrees(vehicle.locationY))
+        self.vehicle = vehicle
     }
     
 }
