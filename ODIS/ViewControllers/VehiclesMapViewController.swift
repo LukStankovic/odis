@@ -21,8 +21,8 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
             userTrackingButton.backgroundColor = UIColor.white
             userTrackingButton.layer.cornerRadius = 5
             userTrackingButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-            userTrackingButton.layer.shadowRadius = 3;
-            userTrackingButton.layer.shadowOpacity = 0.5;
+            userTrackingButton.layer.shadowRadius = 3
+            userTrackingButton.layer.shadowOpacity = 0.5
             map.delegate = self
             map.showsUserLocation = true
             map.setUserTrackingMode(.follow, animated: true)
@@ -50,18 +50,17 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
     }()
 
     @IBOutlet weak var refreshButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         refreshButton.layer.cornerRadius = 5
         refreshButton.layer.masksToBounds = true
-        
+
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-        
 
         // TODO after location init
         if userLocation != nil {
@@ -130,13 +129,12 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
             return
         }
         feedbackGenerator.selectionChanged()
-        
+
         let vehicleAnnotation = annotationView.annotation as! VehicleAnnotation
         let vehiclePage = BulletinDataSource.makeVehiclePage(vehicle: vehicleAnnotation.vehicle)
         bulletinManager = BLTNItemManager(rootItem: vehiclePage)
         bulletinManager.showBulletin(above: self)
-        
+
     }
-    
 
 }

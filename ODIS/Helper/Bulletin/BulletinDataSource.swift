@@ -16,7 +16,7 @@ enum BulletinDataSource {
         if (vehicle == nil) {
             return VehiclePageBulletinItem(title: "")
         }
-        
+
         let page = VehiclePageBulletinItem(title: self.getTitle(vehicle: vehicle!))
         page.attributedDescriptionText = self.getVehicleInformation(vehicle: vehicle!)
         page.isDismissable = true
@@ -26,17 +26,17 @@ enum BulletinDataSource {
 
     private static func getTitle(vehicle: Vehicle) -> String {
         let lowFloor = vehicle.lowFloor ? "♿" : ""
-        
+
         return lowFloor + " " + vehicle.line + " ➡️ " + vehicle.finalStop
     }
-    
+
     private static func getVehicleInformation(vehicle: Vehicle) -> NSAttributedString {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .left
-        
-        let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.paragraphStyle: paragraph]
+
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.paragraphStyle: paragraph]
         let vehicleInformation = NSAttributedString(string: "🚏 " + vehicle.lastStop + "\n⏱ " + vehicle.delay + "\n🚌 " + vehicle.vehicleNumber + " (" + vehicle.connection + ")", attributes: attributes)
-    
+
         return vehicleInformation
     }
 
