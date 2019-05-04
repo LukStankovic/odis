@@ -3,4 +3,5 @@ use_frameworks!
 
 target 'ODIS' do
     pod 'BulletinBoard'
+    pod 'Cluster'
 end

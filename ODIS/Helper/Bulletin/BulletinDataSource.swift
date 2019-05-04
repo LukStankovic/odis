@@ -26,8 +26,7 @@ enum BulletinDataSource {
 
     private static func getTitle(vehicle: Vehicle) -> String {
         let lowFloor = vehicle.lowFloor ? "♿" : ""
-
-        return lowFloor + " " + vehicle.line + " ➡️ " + vehicle.finalStop
+        return  vehicle.line + " " + lowFloor + "\n" + vehicle.finalStop
     }
 
     private static func getVehicleInformation(vehicle: Vehicle) -> NSAttributedString {

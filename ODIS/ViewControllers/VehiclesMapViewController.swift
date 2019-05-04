@@ -31,6 +31,7 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
     }
 
     @IBAction func refreshVehiclesBtn(_ sender: UIButton) {
+        feedbackGenerator.selectionChanged()
         loadVehiclesIntoMap()
     }
 
@@ -88,9 +89,10 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
             }
 
             guard let vehicles = vehicles else { return }
+            let annotations = self.map.annotations
 
             DispatchQueue.main.async {
-                self.map.removeAnnotations(self.map.annotations)
+                self.map.removeAnnotations(annotations)
             }
 
             DispatchQueue.main.async {
@@ -113,15 +115,17 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
         annotationView.canShowCallout = false
 
         let vehicleAnnotation = annotation as! VehicleAnnotation
+        
         annotationView.image = vehicleAnnotation.image
+        let annotationLabel = UILabel(frame: CGRect(x: (vehicleAnnotation.image.size.width / 2) - 5, y: vehicleAnnotation.image.size.height + 5, width: vehicleAnnotation.image.size.width, height: 20))
 
-        let annotationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 105, height: 30))
         annotationLabel.numberOfLines = 1
-        annotationLabel.textAlignment = .center
+        //annotationLabel.textAlignment = .center
         annotationLabel.text =  annotation.title!!
         annotationView.addSubview(annotationLabel)
 
         return annotationView
+        
     }
 
     func mapView(_ mapView: MKMapView, didSelect annotationView: MKAnnotationView) {
@@ -134,7 +138,6 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
         let vehiclePage = BulletinDataSource.makeVehiclePage(vehicle: vehicleAnnotation.vehicle)
         bulletinManager = BLTNItemManager(rootItem: vehiclePage)
         bulletinManager.showBulletin(above: self)
-
     }
 
 }

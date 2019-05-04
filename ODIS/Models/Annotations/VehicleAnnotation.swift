@@ -12,7 +12,6 @@ class VehicleAnnotation: NSObject, MKAnnotation {
 
     init(vehicle: Vehicle) {
         self.title = vehicle.line
-        self.subtitle = ""
         self.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(vehicle.locationX), longitude: CLLocationDegrees(vehicle.locationY))
         self.vehicle = vehicle
     }
