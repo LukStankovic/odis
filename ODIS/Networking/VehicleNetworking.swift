@@ -9,7 +9,7 @@
 import Foundation
 
 struct VehicleNetworking {
-
+    
     func getVehicles(completion: @escaping (_ result: Vehicles?, _ error: Error?) -> Void) {
         let url = URL(string: "https://vydaje.stankoviclukas.cz/odis/vehicles/")!
         var request = URLRequest(url: url)

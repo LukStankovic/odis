@@ -10,8 +10,9 @@ import UIKit
 import MapKit
 import CoreLocation
 import BLTNBoard
+import Cluster
 
-class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class VehiclesMapViewController: UIViewController {
 
     // Map
     @IBOutlet weak var map: MKMapView! {
@@ -50,36 +51,38 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
         return BLTNItemManager(rootItem: introPage)
     }()
 
+   //  let clusterManager = ClusterManager()
+
     @IBOutlet weak var refreshButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadRefreshButton()
+        loadManager()
+        loadUserLocation()
+        loadVehiclesIntoMap()
+        _ = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(VehiclesMapViewController.loadVehiclesIntoMap), userInfo: nil, repeats: true)
+    }
 
+    func loadRefreshButton() {
         refreshButton.layer.cornerRadius = 5
         refreshButton.layer.masksToBounds = true
+    }
 
+    func loadManager() {
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
+    }
 
+    func loadUserLocation() {
         // TODO after location init
         if userLocation != nil {
             let span: MKCoordinateSpan = MKCoordinateSpan.init(latitudeDelta: 0.02, longitudeDelta: 0.02)
             let region: MKCoordinateRegion = MKCoordinateRegion.init(center: userLocation!, span: span)
             map.setRegion(region, animated: true)
         }
-
-        loadVehiclesIntoMap()
-        var vehiclesUpdateTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(VehiclesMapViewController.loadVehiclesIntoMap), userInfo: nil, repeats: true)
-
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
-
-        userLocation = CLLocationCoordinate2D.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        map.showsUserLocation = true
     }
 
     @objc func loadVehiclesIntoMap() {
@@ -96,15 +99,19 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
             }
 
             DispatchQueue.main.async {
+                self.map.delegate = self
                 for vehicle in vehicles.vehicles {
                     let annotation = AnnotationFactory.shared().getAnnotation(vehicle: vehicle)
                     self.map.addAnnotation(annotation)
-                    self.map.delegate = self
+                    // self.clusterManager.add(annotation)
                 }
             }
-
         }
     }
+
+}
+
+extension VehiclesMapViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
@@ -115,17 +122,16 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
         annotationView.canShowCallout = false
 
         let vehicleAnnotation = annotation as! VehicleAnnotation
-        
+
         annotationView.image = vehicleAnnotation.image
         let annotationLabel = UILabel(frame: CGRect(x: (vehicleAnnotation.image.size.width / 2) - 5, y: vehicleAnnotation.image.size.height + 5, width: vehicleAnnotation.image.size.width, height: 20))
 
         annotationLabel.numberOfLines = 1
-        //annotationLabel.textAlignment = .center
         annotationLabel.text =  annotation.title!!
         annotationView.addSubview(annotationLabel)
 
         return annotationView
-        
+
     }
 
     func mapView(_ mapView: MKMapView, didSelect annotationView: MKAnnotationView) {
@@ -139,5 +145,13 @@ class VehiclesMapViewController: UIViewController, CLLocationManagerDelegate, MK
         bulletinManager = BLTNItemManager(rootItem: vehiclePage)
         bulletinManager.showBulletin(above: self)
     }
+}
 
+extension VehiclesMapViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+
+        userLocation = CLLocationCoordinate2D.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        map.showsUserLocation = true
+    }
 }
