@@ -94,13 +94,13 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		1A2438FD2275FC8D005DF2C8 /* ViewControllers */ = {
+		1A2438FD2275FC8D005DF2C8 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				1A860E2D226365D600BC8E26 /* VehiclesMapViewController.swift */,
 				1A860E2F226365D600BC8E26 /* VehicleFilterViewController.swift */,
 			);
-			path = ViewControllers;
+			path = View;
 			sourceTree = "<group>";
 		};
 		1A2438FF227601BD005DF2C8 /* Annotations */ = {
@@ -145,9 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				1A4AA18422AC3CEA001F2A89 /* ViewModel */,
+				1A2438FD2275FC8D005DF2C8 /* View */,
 				1A18148E2278B3260017B3FF /* Helper */,
-				1AF4ED512278A619000C6DFE /* SupportFiles */,
-				1A2438FD2275FC8D005DF2C8 /* ViewControllers */,
+				1AF4ED512278A619000C6DFE /* Support */,
 				1A2438FA2275FA4C005DF2C8 /* Networking */,
 				1A860E412263665100BC8E26 /* Model */,
 				1A860E39226365D800BC8E26 /* Info.plist */,
@@ -166,7 +166,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		1AF4ED512278A619000C6DFE /* SupportFiles */ = {
+		1AF4ED512278A619000C6DFE /* Support */ = {
 			isa = PBXGroup;
 			children = (
 				1A243904227616A8005DF2C8 /* Assets.xcassets */,
@@ -174,7 +174,7 @@
 				1A860E31226365D600BC8E26 /* Main.storyboard */,
 				1A860E36226365D800BC8E26 /* LaunchScreen.storyboard */,
 			);
-			path = SupportFiles;
+			path = Support;
 			sourceTree = "<group>";
 		};
 		6AE1562DD44D0D8DFD2FBC55 /* Frameworks */ = {
@@ -361,6 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -422,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

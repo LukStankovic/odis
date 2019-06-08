@@ -87,13 +87,13 @@ class VehiclesMapViewController: UIViewController {
 
     @objc func loadVehiclesIntoMap() {
         let annotations = self.map.annotations
-        
         DispatchQueue.main.async { [weak self] in
             self?.map.removeAnnotations(annotations)
         }
-        
+
         DispatchQueue.main.async { [weak self] in
             self?.map.delegate = self
+            self?.vehiclesViewModel.refreshVehicles()
             for vehicle in self?.vehiclesViewModel.vehicles ?? [] {
                 let annotation = AnnotationFactory.shared().getAnnotation(vehicle: vehicle)
                 self?.map.addAnnotation(annotation)
