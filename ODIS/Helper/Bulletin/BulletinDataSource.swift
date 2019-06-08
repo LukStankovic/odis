@@ -12,7 +12,7 @@ import SafariServices
 
 enum BulletinDataSource {
 
-    static func makeVehiclePage(vehicle: Vehicle?) -> VehiclePageBulletinItem {
+    static func makeVehiclePage(vehicle: VehicleTO?) -> VehiclePageBulletinItem {
         if (vehicle == nil) {
             return VehiclePageBulletinItem(title: "")
         }
@@ -24,12 +24,12 @@ enum BulletinDataSource {
         return page
     }
 
-    private static func getTitle(vehicle: Vehicle) -> String {
+    private static func getTitle(vehicle: VehicleTO) -> String {
         let lowFloor = vehicle.lowFloor ? "♿" : ""
         return  vehicle.line + " " + lowFloor + "\n" + vehicle.finalStop
     }
 
-    private static func getVehicleInformation(vehicle: Vehicle) -> NSAttributedString {
+    private static func getVehicleInformation(vehicle: VehicleTO) -> NSAttributedString {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .left
 

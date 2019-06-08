@@ -1,10 +1,10 @@
 import Foundation
 
-struct Vehicles: Decodable {
-    let vehicles: [Vehicle]
+struct VehiclesTO: Decodable {
+    let vehicles: [VehicleTO]
 }
 
-struct Vehicle: Decodable {
+struct VehicleTO: Decodable {
     let line: String
     let connection: String
     let lastStop: String
@@ -17,4 +17,5 @@ struct Vehicle: Decodable {
     let delayInSeconds: Int
     let locationX: Float
     let locationY: Float
+ 
 }

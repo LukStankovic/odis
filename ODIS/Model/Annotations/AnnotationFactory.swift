@@ -16,7 +16,7 @@ class AnnotationFactory {
         return annotationFactory
     }
 
-    func getAnnotation(vehicle: Vehicle) -> VehicleAnnotation {
+    func getAnnotation(vehicle: VehicleTO) -> VehicleAnnotation {
         let vehicleLine = Int(vehicle.line) ?? 0
 
         if vehicleLine > 0 && vehicleLine <= 19 && !vehicle.line.contains("MHD") {

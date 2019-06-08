@@ -13,7 +13,7 @@ import BLTNBoard
 import Cluster
 
 class VehiclesMapViewController: UIViewController {
-
+    
     // Map
     @IBOutlet weak var map: MKMapView! {
         didSet {
@@ -38,14 +38,14 @@ class VehiclesMapViewController: UIViewController {
 
     let manager = CLLocationManager()
 
-    let vehicleNetworing = VehicleNetworking()
-
     var userLocation: CLLocationCoordinate2D?
 
     var timer: Timer!
 
     let feedbackGenerator = UISelectionFeedbackGenerator()
 
+    var vehiclesViewModel = VehiclesViewModel()
+    
     lazy var bulletinManager: BLTNItemManager = {
         let introPage = BulletinDataSource.makeVehiclePage(vehicle: nil)
         return BLTNItemManager(rootItem: introPage)
@@ -86,27 +86,20 @@ class VehiclesMapViewController: UIViewController {
     }
 
     @objc func loadVehiclesIntoMap() {
-        vehicleNetworing.getVehicles { (vehicles, error) in
-            if error != nil {
-                print("Error")
-            }
-
-            guard let vehicles = vehicles else { return }
-            let annotations = self.map.annotations
-
-            DispatchQueue.main.async {
-                self.map.removeAnnotations(annotations)
-            }
-
-            DispatchQueue.main.async {
-                self.map.delegate = self
-                for vehicle in vehicles.vehicles {
-                    let annotation = AnnotationFactory.shared().getAnnotation(vehicle: vehicle)
-                    self.map.addAnnotation(annotation)
-                    // self.clusterManager.add(annotation)
-                }
+        let annotations = self.map.annotations
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.map.removeAnnotations(annotations)
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.map.delegate = self
+            for vehicle in self?.vehiclesViewModel.vehicles ?? [] {
+                let annotation = AnnotationFactory.shared().getAnnotation(vehicle: vehicle)
+                self?.map.addAnnotation(annotation)
             }
         }
+
     }
 
 }

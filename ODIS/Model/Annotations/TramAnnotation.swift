@@ -9,7 +9,7 @@
 import MapKit
 
 class TramAnnotation: VehicleAnnotation {
-    override init(vehicle: Vehicle) {
+    override init(vehicle: VehicleTO) {
         super.init(vehicle: vehicle)
         image = UIImage(named: VehicleTypes.tram.rawValue)
         icon = VehicleTypesIcons.tram.rawValue

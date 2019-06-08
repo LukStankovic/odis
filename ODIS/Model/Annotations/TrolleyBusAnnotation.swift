@@ -9,7 +9,7 @@
 import MapKit
 
 class TrolleyBusAnnotation: VehicleAnnotation {
-    override init(vehicle: Vehicle) {
+    override init(vehicle: VehicleTO) {
         super.init(vehicle: vehicle)
         image = UIImage(named: VehicleTypes.tbus.rawValue)
         icon = VehicleTypesIcons.tbus.rawValue
